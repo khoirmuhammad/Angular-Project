@@ -1,4 +1,36 @@
-.propImg{
-  height: 250px;
-  width: 250px;
+.card-img-wrapper{
+  overflow: hidden;
+}
+
+.card:hover img{
+  transform: scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  opacity: .5;
+}
+
+.card img{
+  transform: scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+.member-items{
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+  opacity: 0;
+}
+
+.card-img-wrapper:hover .member-items{
+  display: block;
+  opacity: 1;
+}
+
+.animate{
+  transition: all 0.3s ease-in-out;
 }
