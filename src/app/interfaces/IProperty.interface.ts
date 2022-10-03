@@ -1,6 +1,9 @@
 export interface IProperty{
   Id:number,
+  IsBuy:number,
+  IsRent:number,
   Name:string,
   Type:string,
-  Price:number
+  Price:number,
+  Image?:string
 }

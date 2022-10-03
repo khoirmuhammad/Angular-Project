@@ -1,20 +1,47 @@
 [
   {
     "Id": 1,
+    "IsBuy": 1,
+    "IsRent": 0,
     "Name": "Dase Grande Minimalize",
     "Type": "House",
-    "Price": 55000
+    "Price": 55000,
+    "Image": "house1"
   },
   {
     "Id": 2,
+    "IsBuy": 1,
+    "IsRent": 0,
     "Name": "Vondox Inda",
-    "Type": "House",
-    "Price": 176000
+    "Type": "Apartment",
+    "Price": 176000,
+    "Image": "apartment1"
   },
   {
     "Id": 3,
-    "Name": "Xalipata City",
-    "Type": "Appartment",
-    "Price": 35000
+    "IsBuy": 0,
+    "IsRent": 1,
+    "Name": "Grand Astor 1",
+    "Type": "Hotel",
+    "Price": 35000,
+    "Image": "hotel1"
+  },
+  {
+    "Id": 4,
+    "IsBuy": 0,
+    "IsRent": 1,
+    "Name": "Royal Ambarketawang",
+    "Type": "Hotel",
+    "Price": 30000,
+    "Image": "hotel2"
+  },
+  {
+    "Id": 5,
+    "IsBuy": 1,
+    "IsRent": 0,
+    "Name": "Timoro Blok",
+    "Type": "House",
+    "Price": 45000,
+    "Image": ""
   }
 ]
