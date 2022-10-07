@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+import { AlertifyService } from 'src/app/services/alertify.service';
+
 
 @Component({
   selector: 'app-user-register',
@@ -9,16 +13,24 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 export class UserRegisterComponent implements OnInit {
 
   registrationForms: FormGroup;
-  constructor() { }
+  user: User;
+
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private alertifyService: AlertifyService) { }
 
   ngOnInit() {
-    this.registrationForms = new FormGroup({
-      userName: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl(null, [Validators.required]),
-      mobile: new FormControl(null, [Validators.required, Validators.minLength(10)])
-    }, this.passwordMatchingValidator);
+    this.buildRegistrationForm();
+  }
+
+  buildRegistrationForm(){
+    this.registrationForms = this.formBuilder.group({
+      userName: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      confirmPassword: [null, Validators.required],
+      mobile: [null, [Validators.required, Validators.minLength(10)]]
+    }, {validator: this.passwordMatchingValidator});
   }
 
   passwordMatchingValidator(fc: AbstractControl): ValidationErrors | null {
@@ -47,7 +59,18 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit(){
+    this.userService.addUser(this.populateUserData());
+    this.registrationForms.reset();
+    this.alertifyService.successAlert("Congratulation. Your data has registerred");
+  }
 
+  populateUserData(): User{
+    return this.user = {
+      userName: this.userNameShorter.value,
+      email: this.emailShorter.value,
+      password: this.passwordShorter.value,
+      mobile: this.mobileShorter.value
+    }
   }
 
 }

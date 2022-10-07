@@ -29,7 +29,7 @@
 
         <div class="form-group col-12">
           <label for="passwrod" class="form-label">Password</label>
-          <input type="text" class="form-control" formControlName="password">
+          <input type="password" class="form-control" formControlName="password">
 
           <span *ngIf="!passwordShorter?.valid && passwordShorter?.touched" class="invalid-text">
             <span *ngIf="passwordShorter.errors?.['required']">Password is required</span>
@@ -40,7 +40,7 @@
 
         <div class="form-group col-12">
           <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="text" class="form-control" formControlName="confirmPassword">
+          <input type="password" class="form-control" formControlName="confirmPassword">
 
           <span *ngIf="!confirmPasswordShorter?.valid && confirmPasswordShorter?.touched" class="invalid-text">
             <span *ngIf="confirmPasswordShorter.errors?.['required']">Confirm Password is required</span>
@@ -53,10 +53,16 @@
         <div class="form-group col-12">
           <label for="mobile" class="form-label">Mobile</label>
           <input type="text" class="form-control" formControlName="mobile">
+
+          <span *ngIf="!mobileShorter?.valid && mobileShorter?.touched" class="invalid-text">
+            <span *ngIf="mobileShorter.errors?.['required']">Mobile is required</span>
+            <span *ngIf="mobileShorter.errors?.['minlength']">Mobile should be not lesser than 10</span>
+          </span>
+
         </div>
 
         <div class="form-group col-12 mt-2">
-          <button type="submit" class="btn btn-primary me-2">Save</button>
+          <button type="submit" class="btn btn-primary me-2" [disabled]="!registrationForms.valid">Save</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
         </div>
       </form>
