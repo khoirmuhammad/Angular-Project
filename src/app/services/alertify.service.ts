@@ -12,4 +12,9 @@ successAlert(message: string){
   return alertify.success(message);
 }
 
+errorAlert(message: string){
+  return alertify.error(message);
+
+}
+
 }
