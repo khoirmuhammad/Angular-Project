@@ -10,9 +10,9 @@
 
                 <div class="form-group col-12 mb-1">
                   <p>I would like to</p>
-                  <div class="btn-gorup" btnRadioGroup ngModel name="BuyRent" required>
-                    <label class="btn btn-outline-warning me-2" btnRadio="1" role="button" name="buyrent"> Buy</label>
-                    <label class="btn btn-outline-danger" btnRadio="2" role="button" name="buyrent"> Rent</label>
+                  <div class="btn-gorup" btnRadioGroup name="isBuy" [(ngModel)]="propertyView.IsBuy">
+                    <label class="btn btn-outline-warning me-2" btnRadio="1" aria-checked="true" role="button"> Buy</label>
+                    <label class="btn btn-outline-danger" btnRadio="0" role="button"> Rent</label>
                   </div>
                 </div>
 
@@ -167,8 +167,8 @@
                 <div class="form-group col-12">
                   <label class="form-label">Ready to Move</label><br/>
                   <div class="btn-gorup" btnRadioGroup>
-                    <label class="btn btn-outline-success me-2" btnRadio="1" role="button" name="rtm"> Yes</label>
-                    <label class="btn btn-outline-danger" btnRadio="2" role="button" name="rtm"> No</label>
+                    <label class="btn btn-outline-success me-2" btnRadio="1" role="button" name="rtm" [(ngModel)]="propertyView.RTM"> Yes</label>
+                    <label class="btn btn-outline-danger" btnRadio="2" role="button" name="rtm" [(ngModel)]="propertyView.RTM"> No</label>
                   </div>
                 </div>
 
