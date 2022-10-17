@@ -17,4 +17,8 @@ errorAlert(message: string){
 
 }
 
+warnAlert(message: string){
+  return alertify.warning(message);
+}
+
 }
