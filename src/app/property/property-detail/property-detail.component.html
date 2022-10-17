@@ -1,10 +1,25 @@
-<p>
-  property-detail works! {{ this.propertyId }}
-</p>
+<div class="row shadow">
+  <div class="col-sm-4 p-0">
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img
+          src="assets/images/default.png"
+          alt="Preview Image"
+          class="card-img-top"
+        />
+      </div>
+      <div class="card-body">
+        <div class="tab-panel">
 
-
-<button class="btn btn-primary" (click)="onClickNextButton()">Next Page</button>
-<button class="btn btn-success" routerLink="/detail-property/1">1</button>
-<button class="btn btn-success" routerLink="/detail-property/2">2</button>
-<button class="btn btn-success" routerLink="/detail-property/3">3</button>
-<button class="btn btn-success" [routerLink]="['/detail-property', '4']">4</button>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Like</button>
+          <button class="btn btn-success">Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8"></div>
+</div>
