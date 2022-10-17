@@ -1,8 +1,7 @@
 [
   {
     "Id": 1,
-    "IsBuy": 1,
-    "IsRent": 0,
+    "SellRent": 1,
     "Name": "Dase Grande Minimalize",
     "PropertyType": "House",
     "Price": 55000,
@@ -29,8 +28,7 @@
   },
   {
     "Id": 2,
-    "IsBuy": 1,
-    "IsRent": 0,
+    "SellRent": 0,
     "Name": "Vondox Inda",
     "PropertyType": "Apartment",
     "Price": 176000,
@@ -57,8 +55,7 @@
   },
   {
     "Id": 3,
-    "IsBuy": 0,
-    "IsRent": 1,
+    "SellRent": 1,
     "Name": "Grand Astor 1",
     "PropertyType": "Hotel",
     "Price": 35000,
@@ -85,8 +82,7 @@
   },
   {
     "Id": 4,
-    "IsBuy": 0,
-    "IsRent": 1,
+    "SellRent": 0,
     "Name": "Royal Ambarketawang",
     "PropertyType": "Hotel",
     "Price": 30000,
@@ -113,8 +109,7 @@
   },
   {
     "Id": 5,
-    "IsBuy": 1,
-    "IsRent": 0,
+    "SellRent": 1,
     "Name": "Timoro Blok",
     "PropertyType": "House",
     "Price": 45000,

@@ -1,7 +1,6 @@
 export interface PropertyBase{
   Id:number,
-  IsBuy:number,
-  IsRent:number,
+  SellRent:number | null,
   Name:string,
   PropertyType:string,
   FurnitureType: string,
