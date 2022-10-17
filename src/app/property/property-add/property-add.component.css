@@ -1,0 +1,13 @@
+.btn-gorup > label[ng-reflect-btn-radio] {
+  border-radius: 0 44px;
+  padding: 0 15px;
+  line-height: 30px;
+}
+
+.photo-control {
+  min-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px dashed blue;
+  margin: 5px;
+}
