@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { IProperty } from '../interfaces/IProperty.interface';
 import { Property } from '../models/property';
 
 @Injectable({
@@ -13,6 +12,14 @@ export class PropertyService {
 
   getAllProperties(): Observable<Property[]> {
     return this.http.get<Property[]>('data/properties.json');
+  }
+
+  getProperty(id: number) {
+    return this.getAllProperties().pipe(
+      map(propertiesArray => {
+        return propertiesArray.find(p => p.Id === id);
+      })
+    );
   }
 
 

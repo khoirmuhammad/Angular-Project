@@ -8,6 +8,6 @@ import { Property } from "src/app/models/property";
 })
 
 export class PropertyCardComponent{
-  @Input() propertyInput : Property;
+  @Input() propertyInput : Property ;
   @Input() hideIcon: boolean;
 }

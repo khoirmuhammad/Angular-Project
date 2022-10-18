@@ -1,7 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProperty } from 'src/app/interfaces/IProperty.interface';
 import { Property } from 'src/app/models/property';
 import { PropertyService } from 'src/app/services/property.service';
 
