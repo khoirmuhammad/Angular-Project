@@ -21,19 +21,7 @@ export class PropertyAddComponent implements OnInit {
   propertyType: Array<string> = ['House','Apartment','Hotel'];
   furnitureType: Array<string> = ['Fully','Semi','Unfurnished'];
 
-  propertyView : Property = {
-    Id : 6,
-    SellRent: null,
-    Name: 'Royal Ambarambar',
-    PropertyType: 'Hotel',
-    FurnitureType: 'Semi',
-    Bhk: 2,
-    BuiltArea: 1,
-    City: '',
-    Price: 300000,
-    RTM: 1,
-    Description: 'Good Hotels'
-  };
+  propertyView  = new Property();
 
   constructor(private router: Router,
               private fb: FormBuilder,

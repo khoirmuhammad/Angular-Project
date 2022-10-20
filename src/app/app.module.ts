@@ -20,6 +20,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserService } from './services/user.service';
 import { AlertifyService } from './services/alertify.service';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 const appRoutes : Routes = [
   {path: '', component: PropertyListComponent},
@@ -53,7 +54,8 @@ const appRoutes : Routes = [
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [
     PropertyService,
