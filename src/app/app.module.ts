@@ -22,6 +22,9 @@ import { AlertifyService } from './services/alertify.service';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
+import { FilteringPipe } from './pipes/filtering.pipe';
+import { SortingPipe } from './pipes/sorting.pipe';
+
 const appRoutes : Routes = [
   {path: '', component: PropertyListComponent},
   {path: 'buy-property', component: PropertyListComponent},
@@ -42,7 +45,9 @@ const appRoutes : Routes = [
     PropertyDetailComponent,
     NavBarComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    FilteringPipe,
+    SortingPipe
    ],
   imports: [
     BrowserModule,
