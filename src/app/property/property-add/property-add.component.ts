@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
+import { IPropertyBase } from 'src/app/interfaces/IPropertyBase';
 import { Property } from 'src/app/models/property';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-property-add',
@@ -20,20 +22,31 @@ export class PropertyAddComponent implements OnInit {
 
   propertyType: Array<string> = ['House','Apartment','Hotel'];
   furnitureType: Array<string> = ['Fully','Semi','Unfurnished'];
+  cities: Array<string>;
 
   propertyView  = new Property();
 
   constructor(private router: Router,
               private fb: FormBuilder,
-              private alertifyService: AlertifyService) { }
+              private alertifyService: AlertifyService,
+              private propertyService: PropertyService) { }
 
   ngOnInit() {
 
     this.CreateAddPropertyForm();
     console.log(this.addPropertyForm.controls);
+
+    this.propertyService.getAllCities().subscribe(data => {
+      this.cities = data;
+    })
+
+    // set default value in dropdown
+    this.propertyView.City = '';
+
   }
 
   CreateAddPropertyForm() {
+    debugger;
     this.addPropertyForm = this.fb.group({
       BasicInfo: this.fb.group({
         SellRent: [null, Validators.required],
@@ -41,7 +54,7 @@ export class PropertyAddComponent implements OnInit {
         PropertyType: [null, Validators.required],
         FurnitureType: [null, Validators.required],
         Name: [null, Validators.required],
-        City: [null, Validators.required]
+        City: [null, [Validators.required]]
       }),
 
       PriceInfo: this.fb.group({
@@ -111,8 +124,10 @@ export class PropertyAddComponent implements OnInit {
     return this.BasicInfo.controls['Name'] as FormControl;
   }
 
+
   get City() {
-    return this.BasicInfo.controls['City'] as FormControl;
+    var cityControl = this.BasicInfo.controls['City'] as FormControl;
+    return cityControl;
   }
 
   get Price() {
@@ -219,6 +234,13 @@ export class PropertyAddComponent implements OnInit {
     } else {
       this.alertifyService.warnAlert('Please Fill the required fields')
     }
+  }
+
+  changeCity(e: any) {
+    debugger;
+    this.City?.setValue(e.target.value, {
+      onlySelf: true,
+    });
   }
 
 }
