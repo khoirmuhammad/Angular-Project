@@ -13,6 +13,12 @@ export class PropertyListComponent implements OnInit {
   SellRent: number;
   Properties: Array<Property>;
 
+  date = new Date();
+  City = '';
+  SearchCityValue = '';
+  SortbyParam = 'City';
+  SortDirection = 'asc';
+
   constructor(private activedRoute: ActivatedRoute,
               private propertySvc: PropertyService) { }
 
@@ -39,6 +45,23 @@ export class PropertyListComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  onCityFilter() {
+    this.SearchCityValue = this.City;
+  }
+
+  onCityFilterClear() {
+    this.SearchCityValue = '';
+    this.City = '';
+  }
+
+  onSortDirection() {
+    if (this.SortDirection === 'desc') {
+      this.SortDirection = 'asc';
+    } else {
+      this.SortDirection = 'desc';
+    }
   }
 
 }
