@@ -11,6 +11,10 @@ export class PropertyService {
 
   constructor(private http:HttpClient) { }
 
+  getAllCities(): Observable<string[]> {
+    return this.http.get<string[]>('https://localhost:7252/api/City');
+  }
+
   getAllProperties(): Observable<Property[]> {
     return this.http.get<Property[]>('data/properties.json');
   }

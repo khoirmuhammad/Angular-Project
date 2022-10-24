@@ -70,7 +70,7 @@
                   />
                   <div
                     class="invalid-text"
-                    *ngIf="!Name.valid && Name.touched"
+                    *ngIf="(!Name.valid && Name.touched)"
                   >
                     <span *ngIf="Name.errors?.['required']"
                       >Field name is required</span
@@ -82,10 +82,13 @@
                 </div>
 
                 <div class="form-group col-12">
-                  <label for="City" class="form-label">City</label>
-                  <input type="text" class="form-control" formControlName="City" [(ngModel)]="propertyView.City"/>
+                  <label class="form-label">City</label>
+                  <select class="form-select" formControlName="City" [(ngModel)]="propertyView.City">
+                    <option value="">Please Select</option>
+                    <option *ngFor="let city of cities" [value]="city"> {{ city }}</option>
+                  </select>
                   <div class="invalid-text" *ngIf="!City.valid && City.touched">
-                    Field city is required
+                    Please select city
                   </div>
                 </div>
 
