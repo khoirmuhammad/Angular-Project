@@ -1,12 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { User, UserRegister } from '../models/user';
+import { environment } from 'src/environments/environment';
+import { UserCredential } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-constructor() { }
+baseUrl = environment.baseUrl;
+
+constructor(private http: HttpClient) { }
 
 addUser(data: User){
   debugger;
@@ -21,15 +26,12 @@ addUser(data: User){
   localStorage.setItem('users', JSON.stringify(users));
 }
 
-authUser(data: any){
-  debugger;
-  let userArray = [];
+registerUser(data: UserRegister){
+  return this.http.post(this.baseUrl + 'Account/Register', data);
+}
 
-  if (localStorage.getItem('users')){
-    userArray = JSON.parse(localStorage.getItem('users') as string);
-  }
-
-  return userArray.find((f: any) => f.email === data.email && f.password === data.password);
+authUser(data: UserCredential){
+  return this.http.post(this.baseUrl + 'Account/Login', data);
 }
 
 }

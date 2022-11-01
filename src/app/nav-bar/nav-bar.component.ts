@@ -16,11 +16,12 @@ export class NavBarComponent implements OnInit {
   }
 
   loggedIn(){
-    return localStorage.getItem('token');
+    return localStorage.getItem('username');
   }
 
   onLogout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     this.alertifyService.successAlert('Sign out has succeeded');
   }
 

@@ -4,3 +4,14 @@ export interface User {
   password: string,
   mobile: number
 }
+
+export interface UserCredential {
+  username?: string,
+  password?: string,
+  token?: string
+}
+
+export class UserRegister{
+  username: string;
+  password: string;
+}
