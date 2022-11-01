@@ -30,7 +30,7 @@
             <a class="nav-link" routerLinkActive="active" routerLink="/user/login">Login</a>
           </li>
           <div *ngIf="loggedIn()" class="dropdown mr-10" dropdown>
-            <a href="#" class="dropdown-toogle text-light" dropdownToggle (click)="false">Welcome, Muhammad Khoirudin</a>
+            <a href="#" class="dropdown-toogle text-light" dropdownToggle (click)="false">Welcome, {{ loggedIn() }}</a>
             <div class="dropdown-menu" *dropdownMenu>
               <a href="#" class="dropdown-item"><i class="fas fa-tachometer-alt"></i> View Dashboard</a>
               <a href="#" class="dropdown-item"><i class="fas fa-user-circle"></i> My Profile</a>

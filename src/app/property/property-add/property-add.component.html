@@ -85,7 +85,7 @@
                   <label class="form-label">City</label>
                   <select class="form-select" formControlName="City" [(ngModel)]="propertyView.City">
                     <option value="">Please Select</option>
-                    <option *ngFor="let city of cities" [value]="city"> {{ city }}</option>
+                    <option *ngFor="let city of cities" [value]="city.id"> {{ city.name }}</option>
                   </select>
                   <div class="invalid-text" *ngIf="!City.valid && City.touched">
                     Please select city

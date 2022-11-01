@@ -22,7 +22,7 @@ export class PropertyAddComponent implements OnInit {
 
   propertyType: Array<string> = ['House','Apartment','Hotel'];
   furnitureType: Array<string> = ['Fully','Semi','Unfurnished'];
-  cities: Array<string>;
+  cities: any[];
 
   propertyView  = new Property();
 
@@ -37,6 +37,7 @@ export class PropertyAddComponent implements OnInit {
     console.log(this.addPropertyForm.controls);
 
     this.propertyService.getAllCities().subscribe(data => {
+      debugger;
       this.cities = data;
     })
 

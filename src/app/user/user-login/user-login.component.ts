@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserService } from 'src/app/services/user.service';
+import { User, UserCredential } from 'src/app/models/user';
 
 @Component({
   selector: 'app-user-login',
@@ -10,6 +11,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
+
+  userCredential: UserCredential = {};
 
   constructor(private userService: UserService,
               private alertifyService: AlertifyService,
@@ -19,15 +22,21 @@ export class UserLoginComponent implements OnInit {
   }
 
   onLogin(loginForm: NgForm){
-    const user = this.userService.authUser(loginForm.value);
     debugger;
-    if (user){
-      localStorage.setItem('token', user.email);
-      this.alertifyService.successAlert('Login Sucessfully');
-      this.router.navigate(['/']);
-    } else {
-      this.alertifyService.errorAlert('Login Failed, Check your email or password');
-    }
+    this.userCredential.password = loginForm.value.password;
+    this.userCredential.username = loginForm.value.email.split('@')[0];
+
+    this.userService.authUser(this.userCredential).subscribe(
+      (response : UserCredential) => {
+          localStorage.setItem('token', response.token ?? '');
+          localStorage.setItem('username', response.username ?? '');
+
+          this.alertifyService.successAlert('Login Sucessfully');
+          this.router.navigate(['/']);
+      }, error => {
+        this.alertifyService.errorAlert(error.error);
+      }
+    );
   }
 
 }

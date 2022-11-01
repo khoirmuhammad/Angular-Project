@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
+import { User, UserRegister } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
 
@@ -14,6 +14,7 @@ export class UserRegisterComponent implements OnInit {
 
   registrationForms: FormGroup;
   user: User;
+  userRegister: UserRegister;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -59,18 +60,22 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    this.userService.addUser(this.populateUserData());
-    this.registrationForms.reset();
-    this.alertifyService.successAlert("Congratulation. Your data has registerred");
+    this.userService.registerUser(this.populateUserRegister()).subscribe(
+      () => {
+        this.registrationForms.reset();
+        this.alertifyService.successAlert("Congratulation. Your data has registerred");
+      }, error => {
+        this.alertifyService.errorAlert(error.error);
+      }
+    );
+
   }
 
-  populateUserData(): User{
-    return this.user = {
-      userName: this.userNameShorter.value,
-      email: this.emailShorter.value,
-      password: this.passwordShorter.value,
-      mobile: this.mobileShorter.value
-    }
+  populateUserRegister(): UserRegister{
+    return this.userRegister = {
+      username: this.emailShorter.value.split('@')[0],
+      password: this.passwordShorter.value
+    };
   }
 
 }
